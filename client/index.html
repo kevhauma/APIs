@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>prikbord</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="APIs.js"></script>
+    <link rel="stylesheet" type="text/css" href="normalize.css"></link>
+    <link rel="stylesheet" type="text/css" href="sakura-earthly.css"></link>
+	
+	
+  </head>
+  <body ng-app="PrikbordApp">   
+    <div ng-controller="MainController" ng-init="GETMessages()">  
+        <div class="messages">
+        <h6>
+            <button ng-click="login()">login with facebook</button></br>
+        <img ng-src="http://api.adorable.io/avatar/128/{{taskgiver}}"/></br>
+        {{taskgiver}}</br>
+        <div ng-repeat='(msgID, message) in messages'>            
+            <h6>{{message.person}} : {{message.description}} By {{message.taskgiver}} 
+            <button class="deletebtn" ng-click="DELMessage(msgID)">delete</button> 
+        </div>
+        <input ng-model="person" type="text" placeholder="person" />
+        <input ng-model="descr" type="text" placeholder="message" /></br>
+        <button ng-click="POSTMessage()">send</button> 
+        </h6>
+      </div>
+      <div class="weather" ng-init="GETWeather()">
+          <h6>
+              <input ng-model="weatherPlace" type="text" placeholder="City"/><button ng-click="GETWeather()">Update</button> </br>
+              <img ng-src="http:{{weather.current.condition.icon}}"/></br>
+              Main: {{weather.current.condition.text}} </br>
+              Clouds: {{weather.current.cloud}} %</br>
+              Temperature: {{weather.current.temp_c}}°C</br>
+              Feels like: {{weather.current.feelslike_c}}°C</br>
+              Wind: {{weather.current.wind_kph}} km/h</br>
+           </h6>
+      
+      
+      
+      </div>
+      <footer class="donation">
+          <input ng-model="cardNumber" type="text" placeholder="cardnumber" />
+          <input ng-model="cardExpMonth" type="text" placeholder="MM" />
+          <input ng-model="cardExpYear" type="text" placeholder="YYYY" />
+          <input ng-model="carCvc" type="text" placeholder="cardCvc" />
+          <input ng-model="Amount" type="text" placeholder="amount" />
+          <select ng-model="Currency">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
+          </select>
+          <button ng-click="GETToken()">Donate!</button> 
+      </footer>
+      
+    </div>
+  </body>
+</html>
