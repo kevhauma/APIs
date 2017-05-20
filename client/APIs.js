@@ -28,7 +28,7 @@ var App = angular.module('PrikbordApp', []);
     }   
           //login with facebook
         $scope.login = function(){
-         window.location.href="https://www.facebook.com/dialog/oauth?client_id=1744370535873150&response_type=token&redirect_uri=http://192.168.1.55:5000/"  
+         window.location.href="https://www.facebook.com/dialog/oauth?client_id=1744370535873150&response_type=token&redirect_uri=http://localhost:5000/"  
       };           
             //getmessages
         $scope.GETMessages = function(){
