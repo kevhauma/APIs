@@ -28,7 +28,8 @@
       <div class="weather" ng-init="GETWeather()">
           <h6>
               <input ng-model="weatherPlace" type="text" placeholder="City"/><button ng-click="GETWeather()">Update</button> </br>
-              <img ng-src="http:{{weather.current.condition.icon}}"/></br>
+              {{weatherPlace}}</br>
+              <img class="weatherPic" ng-src="http:{{weather.current.condition.icon}}"/></br>                
               Main: {{weather.current.condition.text}} </br>
               Clouds: {{weather.current.cloud}} %</br>
               Temperature: {{weather.current.temp_c}}°C</br>
@@ -43,8 +44,8 @@
           <input ng-model="cardNumber" type="text" placeholder="cardnumber" />
           <input ng-model="cardExpMonth" type="text" placeholder="MM" />
           <input ng-model="cardExpYear" type="text" placeholder="YYYY" />
-          <input ng-model="carCvc" type="text" placeholder="cardCvc" />
-          <input ng-model="Amount" type="text" placeholder="amount" />
+          <input ng-model="cardCvc" type="text" placeholder="cardCvc" />
+          <input ng-model="Amount" type="int" placeholder="amount" />
           <select ng-model="Currency">
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
