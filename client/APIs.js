@@ -26,7 +26,7 @@ var App = angular.module('PrikbordApp', []);
             });
         };
         var GETRandomName = function(name){
-              $http.get('https://uinames.com/api/')
+              $http.get('https://uinames.com/api/?region=belgium')
                         .then
                             (function(response){
                                 $scope.RandomName = response.data;
