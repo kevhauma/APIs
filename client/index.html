@@ -15,7 +15,7 @@
         <h6>
             <button ng-click="login()">login with facebook</button></br>
         <img ng-src="http://api.adorable.io/avatar/128/{{taskgiver}}"/></br>
-        {{taskgiver}}</br>
+        {{taskgiver}} </br>
         <div ng-repeat='(msgID, message) in messages'>            
             <h6>{{message.person}} : {{message.description}} By {{message.taskgiver}} 
             <button class="deletebtn" ng-click="DELMessage(msgID)">delete</button> 

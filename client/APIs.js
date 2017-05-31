@@ -52,7 +52,7 @@ var App = angular.module('PrikbordApp', []);
           //getIP
           $http.get('https://api.ipify.org?format=json')
               .then(function(response){
-                $scope.IP = response.data.IP;
+                $scope.IP = response.data.ip;
             });
             //getmessages
         $scope.GETMessages = function(){
