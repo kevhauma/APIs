@@ -28,7 +28,7 @@
       <div class="weather" ng-init="GETWeather()">
           <h6>
               <input ng-model="weatherPlace" type="text" placeholder="City"/><button ng-click="GETWeather()">Update</button> </br>
-              {{weatherPlace}}</br>
+              {{weather.location.name}}, {{weather.location.country}}</br>
               <img class="weatherPic" ng-src="http:{{weather.current.condition.icon}}"/></br>                
               Main: {{weather.current.condition.text}} </br>
               Clouds: {{weather.current.cloud}} %</br>

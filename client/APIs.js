@@ -48,11 +48,16 @@ var App = angular.module('PrikbordApp', []);
           //login with facebook
         $scope.login = function(){
             window.location.href="https://www.facebook.com/dialog/oauth?client_id=1744370535873150&response_type=token&redirect_uri=http://http://localhost:5000/"  
-        };           
+        };
+          //getIP
+          $http.get('https://api.ipify.org?format=json')
+              .then(function(response){
+                $scope.IP = response.data.IP;
+            });
             //getmessages
         $scope.GETMessages = function(){
-	       $http.get('https://prikbord-74c3d.firebaseio.com/messages.json').then
-            (function(response){
+	       $http.get('https://prikbord-74c3d.firebaseio.com/messages.json')
+               .then(function(response){
                 $scope.messages = response.data;
             });
         };        
@@ -61,9 +66,9 @@ var App = angular.module('PrikbordApp', []);
             if ($scope.person){
                 if ($scope.descr){
                      if ($scope.taskgiver === ""){
-                        GETRandomName();                   
+                        GETRandomName("msg");                   
                     }
-                    else {POSTFullMessage("msg");};
+                    else {POSTFullMessage();};
                 }
                 else {alert("no message");};
             }
@@ -72,7 +77,7 @@ var App = angular.module('PrikbordApp', []);
         //POST message after checks
         var POSTFullMessage = function(){
             $http.post('https://prikbord-74c3d.firebaseio.com/messages.json',
-            '{"person":"' + $scope.person + '","description":"' +   $scope.descr + '","taskgiver":"' + $scope.taskgiver + '"}')
+            '{"person":"' + $scope.person + '","description":"' +   $scope.descr + '","taskgiver":"' + $scope.taskgiver + '","IP":"' + $scope.IP + '"}')
             .then
                 (function(response){
                     $scope.GETMessages();        
@@ -110,13 +115,14 @@ var App = angular.module('PrikbordApp', []);
                 //geen idee
                 $http(request)
                 .then(function (data) {
-                    $scope.StripeToken = data.data.id;         
-                }, errCb).catch(errCb)
-                .then(function(){
+                    $scope.StripeToken = data.data.id;
                     if ($scope.taskgiver === ""){
-                        GETRandomName();                   
+                        GETRandomName();                  
                     }
                     else {POSTDonation("Donation");};
+                }, errCb).catch(errCb)
+                .then(function(){
+                    
                 });
             };
         };
